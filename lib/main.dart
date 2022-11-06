@@ -6,6 +6,8 @@ import 'package:getx_tutorial/dependency_management/controller.dart';
 import 'package:getx_tutorial/navigation/next_page.dart';
 import 'package:getx_tutorial/state_manage/reactive_state_management.dart';
 import 'package:getx_tutorial/state_manage/simple_state_management.dart';
+import 'package:getx_tutorial/translations/messages.dart';
+import 'package:getx_tutorial/translations/translations_view.dart';
 
 import 'dependency_management/detail_page.dart';
 import 'dependency_management/view.dart';
@@ -13,7 +15,9 @@ import 'navigation/navigation.dart';
 
 void main() {
   runApp(const MyApp());
+  // WidgetsFlutterBinding.ensureInitialized();
 }
+
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -32,27 +36,27 @@ class MyApp extends StatelessWidget {
       //   }
       // },
 
-      getPages: [
-        GetPage(
-          name: '/detail',
-          page: () => DetailPage(),
-          binding: BindingsBuilder(() {
-            // Get.lazyPut<Controller>(() => Controller(), fenix: true);
-
-            Get.lazyPut<Controller>(()=> Controller());
-            Get.putAsync<AsyncTask>(() async {
-              await Future.delayed(const Duration(seconds: 3));
-              return AsyncTask();
-            }, permanent: false);
-          }),
-        ),
-      ],
+      // getPages: [
+      //   GetPage(
+      //     name: '/detail',
+      //     page: () => DetailPage(),
+      //     binding: BindingsBuilder(() {
+      //       // Get.lazyPut<Controller>(() => Controller(), fenix: true);
+      //
+      //       Get.lazyPut<Controller>(()=> Controller());
+      //       Get.putAsync<AsyncTask>(() async {
+      //         await Future.delayed(const Duration(seconds: 3));
+      //         return AsyncTask();
+      //       }, permanent: false);
+      //     }),
+      //   ),
+      // ],
+      translations: Messages(),
+      // locale: Get.deviceLocale,
+      locale: const Locale('en', 'America'),
+      fallbackLocale: const Locale('en', 'America'),
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: DependencyExamle(),
+      home: Example(),
     );
   }
 }
