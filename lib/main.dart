@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:getx_tutorial/dependency_management/class.dart';
 import 'package:getx_tutorial/dependency_management/controller.dart';
 import 'package:getx_tutorial/navigation/next_page.dart';
 import 'package:getx_tutorial/state_manage/reactive_state_management.dart';
 import 'package:getx_tutorial/state_manage/simple_state_management.dart';
+import 'package:getx_tutorial/themes/themes.dart';
+import 'package:getx_tutorial/themes/themes_example.dart';
 import 'package:getx_tutorial/translations/messages.dart';
 import 'package:getx_tutorial/translations/translations_view.dart';
 
@@ -13,8 +16,9 @@ import 'dependency_management/detail_page.dart';
 import 'dependency_management/view.dart';
 import 'navigation/navigation.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  await GetStorage.init();
+  runApp(ThemeExample());
   // WidgetsFlutterBinding.ensureInitialized();
 }
 
@@ -51,12 +55,12 @@ class MyApp extends StatelessWidget {
       //     }),
       //   ),
       // ],
-      translations: Messages(),
-      // locale: Get.deviceLocale,
-      locale: const Locale('en', 'America'),
-      fallbackLocale: const Locale('en', 'America'),
+      // translations: Messages(),
+      // // locale: Get.deviceLocale,
+      // locale: const Locale('en', 'America'),
+      // fallbackLocale: const Locale('en', 'America'),
       debugShowCheckedModeBanner: false,
-      home: Example(),
+      home: ThemeExample(),
     );
   }
 }
